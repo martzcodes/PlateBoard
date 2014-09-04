@@ -4,16 +4,45 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 	function($scope, $stateParams, $location, Authentication, Articles) {
 		$scope.authentication = Authentication;
 
+		$scope.createview = function() {
+			$scope.user = Authentication.user;
+
+			// If user is not signed in then redirect back home
+			if (!$scope.user) $location.path('/signin');
+		};
+
 		$scope.create = function() {
 			var article = new Articles({
-				title: this.title,
-				content: this.content
+				platenumber: this.platenumber,
+				platenumbercheck: this.platenumbercheck,
+				plateorigin: this.plateorigin,
+				plateorigincheck: this.plateorigincheck,
+				vehicletype: this.vehicletype,
+				vehicletypecheck: this.vehicletypecheck,
+				vehiclemake: this.vehiclemake,
+				vehiclemakecheck: this.vehiclemakecheck,
+				driversex: this.driversex,
+				formwhen: this.formwhen,
+				formwhere: this.formwhere,
+				message: this.message,
+				formanonymous: this.formanonymous
 			});
 			article.$save(function(response) {
 				$location.path('articles/' + response._id);
 
-				$scope.title = '';
-				$scope.content = '';
+				$scope.platenumber = '';
+				$scope.platenumbercheck = '';
+				$scope.plateorigin = '';
+				$scope.plateorigincheck = '';
+				$scope.vehicletype = '';
+				$scope.vehicletypecheck = '';
+				$scope.vehiclemake = '';
+				$scope.vehiclemakecheck = '';
+				$scope.driversex = '';
+				$scope.formwhen = '';
+				$scope.formwhere = '';
+				$scope.message = '';
+				$scope.formanonymous = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

@@ -1,29 +1,115 @@
-<section data-ng-controller="ArticlesController">
-	<div class="page-header">
-		<h1>New Article</h1>
-	</div>
-	<div class="col-md-12">
-		<form name="articleForm" class="form-horizontal" data-ng-submit="create()" novalidate>
-			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
-					<label class="control-label" for="title">Title</label>
-					<div class="controls">
-						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label" for="content">Content</label>
-					<div class="controls">
-						<textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<input type="submit" class="btn btn-default">
-				</div>
+<section data-ng-controller="ArticlesController" data-ng-init="createview()">
+    <div class="page-header">
+        <h1>New Message</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="platenumber">License Plate Number</label>
+                    <div class="controls">
+                        <div class="col-sm-6">
+                            <input type="text" data-ng-model="platenumber" id="platenumber" class="form-control" placeholder="ABCDEF" required>
+                        </div>
+                        <div class="checkbox col-sm-6">
+                            <input type="checkbox" data-ng-model="platenumbercheck" id="platenumbercheck"> Not Exact
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="plateorigin">License Plate Origin</label>
+                    <div class="controls">
+                        <div class="col-sm-6">
+                            <select class="form-control" data-ng-model="plateorigin" id="plateorigin">
+                                <option>DC</option>
+                                <option>MD</option>
+                                <option>VA</option>
+                                <option>PA</option>
+                                <option>NY</option>
+                            </select>
+                        </div>
+                        <div class="checkbox col-sm-6">
+                            <input type="checkbox" data-ng-model="plateorigincheck" id="plateorigincheck"> Not Exact
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="vehicletype">Vehicle Type</label>
+                    <div class="controls">
+                        <div class="col-sm-6">
+                            <select class="form-control" data-ng-model="vehicletype" id="vehicletype">
+                                <option>Sedan</option>
+                                <option>Hatchback</option>
+                                <option>SUV</option>
+                                <option>Pickup Truck</option>
+                                <option>Semi</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="checkbox col-sm-6">
+                            <input type="checkbox" data-ng-model="vehicletypecheck" id="vehicletypecheck"> Not Exact
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="vehiclemake">Vehicle Make</label>
+                    <div class="controls">
+                        <div class="col-sm-6">
+                            <select class="form-control" data-ng-model="vehiclemake" id="vehiclemake">
+                                <option>Ford</option>
+                                <option>Dodge</option>
+                                <option>Toyota</option>
+                                <option>Honda</option>
+                                <option>Other</option>
+                                <option>Unknown</option>
+                            </select>
+                        </div>
+                        <div class="checkbox col-sm-6">
+                            <input type="checkbox" data-ng-model="vehiclemakecheck" id="vehiclemakecheck"> Not Exact
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="driversex">Who was driving?</label>
+                    <div class="controls">
+                        <select class="form-control" data-ng-model="driversex" id="driversex">
+                            <option>Man</option>
+                            <option>Woman</option>
+                            <option>Not Sure</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="formwhen">When?</label>
+                    <div class="controls">
+                        <input type="datetime-local" class="form-control" data-ng-model="formwhen" id="formwhen">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="formwhere">Where? (please share a google maps location link)</label>
+                    <div class="controls">
+                        <input type="url" class="form-control" data-ng-model="formwhere" id="formwhere">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="message">Message for Owner</label>
+                    <div class="controls">
+                        <textarea name="message" data-ng-model="message" id="message" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="formanonymous">Anonymity</label>
+                    <div class="controls">
+                        <input type="checkbox" data-ng-model="formanonymous" id="formanonymous"> I prefer to remain anonymous
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
-			</fieldset>
-		</form>
-	</div>
+            </fieldset>
+        </form>
+    </div>
 </section>
